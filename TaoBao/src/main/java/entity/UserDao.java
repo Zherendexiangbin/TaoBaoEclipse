@@ -16,7 +16,7 @@ public class UserDao {
         String password = "";
         return DriverManager.getConnection(url, username, password);
     }
-//	(1)用户的登录功能，方法定义如下：
+//	(1)用户的登录功能，方法定义如下�?
 
     public User findByUsernameAndPassword(String username, String password) {
     	try {

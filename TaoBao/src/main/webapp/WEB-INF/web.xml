@@ -27,4 +27,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCommodities</display-name>
+    <servlet-name>GetCommodities</servlet-name>
+    <servlet-class>taobao.net.GetCommodities</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCommodities</servlet-name>
+    <url-pattern>/GetCommodities</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/main/java/entity/UserDao.java=UTF-8
+encoding//src/main/java/taobao/net/LoginServlet.java=UTF-8
 encoding//src/main/java/taobao/net/RegisterServlet.java=UTF-8
-encoding/<project>=GBK
