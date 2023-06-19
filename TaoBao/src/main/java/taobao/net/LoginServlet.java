@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.ResponseWriter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import entity.Commodity;
 import entity.User;
@@ -49,11 +51,23 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String requestBody = (String) request.getAttribute("requsetBody");
 		Gson gson = new Gson();
-		BufferedReader reader = request.getReader();
-		User user = gson.fromJson(reader, User.class);
-		handleLogin(user);
+		User user = gson.fromJson(requestBody, User.class);
+		
+		JsonObject reponseJson = new JsonObject();
+		if (UserService.CheckLogin(user)) {
+			reponseJson.addProperty("state", "success");
+		} else {
+			reponseJson.addProperty("state", "fail");
+		}
+		
+		ResponseWriter.write(response, reponseJson.toString());
+		
+//		Gson gson = new Gson();
+//		BufferedReader reader = request.getReader();
+//		User user = gson.fromJson(reader, User.class);
+//		handleLogin(user);
 		
 	}
 	 private void handleLogin(User user) throws IOException {
